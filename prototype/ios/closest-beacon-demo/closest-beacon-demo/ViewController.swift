@@ -53,6 +53,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		}
 	}
 	
+	// Notifications Section
 	func registerLocalNotification()
 	{
 		let localNotification = UILocalNotification()

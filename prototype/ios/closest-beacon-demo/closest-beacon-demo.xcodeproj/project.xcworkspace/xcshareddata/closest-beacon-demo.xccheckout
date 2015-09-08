@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D7A478A7-F2C9-41A9-A7E8-3899582CE2D2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>closest-beacon-demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DF24473D4BF1883D6F995BB3FA9339BE04C44C8A</key>
+		<string>https://github.com/hartungm/BeaconMuseumSystem.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>prototype/ios/closest-beacon-demo/closest-beacon-demo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DF24473D4BF1883D6F995BB3FA9339BE04C44C8A</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hartungm/BeaconMuseumSystem.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DF24473D4BF1883D6F995BB3FA9339BE04C44C8A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DF24473D4BF1883D6F995BB3FA9339BE04C44C8A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BeaconMuseumSystem</string>
+		</dict>
+	</array>
+</dict>
+</plist>
