@@ -10,6 +10,8 @@ import UIKit
 import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
+	@IBOutlet weak var majorLabel: UILabel!
+	@IBOutlet weak var minorLabel: UILabel!
 	
 	let locationManager = CLLocationManager()
 	let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Estimotes")
@@ -50,6 +52,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		{
 			let closestBeacon = knownBeacons[0] as! CLBeacon
 			self.view.backgroundColor = self.colors[closestBeacon.minor.integerValue]
+			self.minorLabel.text = "Minor: \(closestBeacon.minor.integerValue)"
+			self.majorLabel.text =  "Major: \(closestBeacon.major.integerValue)"
 		}
 	}
 	
