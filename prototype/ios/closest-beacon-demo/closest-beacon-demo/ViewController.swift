@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 			locationManager.requestWhenInUseAuthorization()
 		}
 		locationManager.startRangingBeaconsInRegion(region)
-		registerLocalNotification()
+//		registerLocalNotification()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -54,20 +54,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	}
 	
 	// Notifications Section
-	func registerLocalNotification()
-	{
-		let localNotification = UILocalNotification()
-		localNotification.regionTriggersOnce = false
-		localNotification.alertAction = "Welcome Back!"
-		localNotification.alertBody = "Found your Estimote Beacons!"
-		localNotification.alertTitle = "Estimote Beacon Test"
-		localNotification.region = region
-		localNotification.timeZone = NSTimeZone.defaultTimeZone()
-		localNotification.soundName = UILocalNotificationDefaultSoundName
-		let application = UIApplication.sharedApplication()
-		application.cancelAllLocalNotifications()
-		application.scheduleLocalNotification(localNotification)
-	}
+//	func registerLocalNotification()
+//	{
+//		let localNotification = UILocalNotification()
+//		localNotification.regionTriggersOnce = false
+//		localNotification.alertAction = "Welcome Back!"
+//		localNotification.alertBody = "Found your Estimote Beacons!"
+//		localNotification.alertTitle = "Estimote Beacon Test"
+//		localNotification.region = region
+//		localNotification.timeZone = NSTimeZone.defaultTimeZone()
+//		localNotification.soundName = UILocalNotificationDefaultSoundName
+//		let application = UIApplication.sharedApplication()
+//		application.cancelAllLocalNotifications()
+//		application.scheduleLocalNotification(localNotification)
+//	}
 
 }
 
