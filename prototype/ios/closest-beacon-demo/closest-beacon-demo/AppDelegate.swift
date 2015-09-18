@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
-		if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")))
-		{
-			application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: nil))
-		}
+		
+		// Parse Stuff
+		Parse.enableLocalDatastore()
+		Parse.setApplicationId("gk8RoKxJSJkF2m7FC0s6GLm0EXEChErxwSnDZwAL", clientKey: "X9j0vsxTlqVpwfr3EOIYw5fnSf9JRqupA1HPB7YO")
+		PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+		
+		// Local Notifications Stuff
+//		if(UIApplication.instancesRespondToSelector(Selector("registerUserNotificationSettings:")))
+//		{
+//			application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: nil))
+//		}
 		return true
 	}
 

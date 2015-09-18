@@ -8,13 +8,15 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 	@IBOutlet weak var majorLabel: UILabel!
 	@IBOutlet weak var minorLabel: UILabel!
 	
 	let locationManager = CLLocationManager()
-	let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Estimotes")
+//	NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")
+	let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "Estimotes")
 	
 	let colors = [
 		14429: UIColor.greenColor(),
@@ -32,6 +34,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		}
 		locationManager.startRangingBeaconsInRegion(region)
 //		registerLocalNotification()
+		
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -39,18 +42,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		// Dispose of any resources that can be recreated.
 	}
 
-	func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+	func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
 //		println(beacons)
 		let knownBeacons = beacons.filter{ $0.proximity != CLProximity.Unknown }
 		for beacon in beacons
 		{
-			let beaconNow = beacon as! CLBeacon
-			println("\(beaconNow.minor.integerValue) - Proximity: \(beaconNow.proximity.rawValue) - RSSI: \(beaconNow.rssi) - Accuracy: \(beaconNow.accuracy)")
+			let beaconNow = beacon 
+			print("\(beaconNow.minor.integerValue) - Proximity: \(beaconNow.proximity.rawValue) - RSSI: \(beaconNow.rssi) - Accuracy: \(beaconNow.accuracy)", terminator: "")
 		}
-		println("")
+		print("", terminator: "")
 		if( knownBeacons.count > 0)
 		{
-			let closestBeacon = knownBeacons[0] as! CLBeacon
+			let closestBeacon = knownBeacons[0] 
 			self.view.backgroundColor = self.colors[closestBeacon.minor.integerValue]
 			self.minorLabel.text = "Minor: \(closestBeacon.minor.integerValue)"
 			self.majorLabel.text =  "Major: \(closestBeacon.major.integerValue)"
