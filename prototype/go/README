@@ -1,9 +1,21 @@
-Download the correct SDK for your system (https://cloud.google.com/appengine/downloads)
+Download the correct SDK for your system 
+   (https://cloud.google.com/appengine/downloads)
 
-The scripts for running the development server as well as deploying the application are contained within the SDK.
-These scripts need not be in the same directory as the app source folder (the one in here)
+The scripts for running the development server as well as 
+   deploying the application are contained within the SDK.
+These scripts need not be in the same directory as the 
+   app source folder (the one in here)
 
-Python 2.7 must be used to run these scripts; if you are running a Python 3.x version you must either downgrade to 2.7 or make a different install of Python 2.7, using that program to run the scripts.
+Python 2.7 must be used to run these scripts; if you are 
+   running a Python 3.x version you must either downgrade 
+   to 2.7 or make a different install of Python 2.7, 
+   using that program to run the scripts.
 
-At this point it is possible that deployment to this particular app is only tied to my (Matt's) google developer account.  This is fine; contact Matt if you need a deploy to production.  All development work should be able to be done locally, though.
-  - Related to above, we may want to make a google account for the project so that we can all deploy if needed (we'll talk about it).
+At this point it is possible that deployment to this 
+   particular app is only tied to my (Matt's) google 
+   developer account.  This is fine; contact Matt if 
+   you need a deploy to production.  All development 
+   work should be able to be done locally, though.
+     - Related to above, we may want to make a google account 
+     for the project so that we can all deploy if needed 
+         (we'll talk about it).
