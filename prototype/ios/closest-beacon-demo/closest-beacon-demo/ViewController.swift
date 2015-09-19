@@ -10,9 +10,11 @@ import UIKit
 import CoreLocation
 import Parse
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate
+{
 	@IBOutlet weak var majorLabel: UILabel!
 	@IBOutlet weak var minorLabel: UILabel!
+	@IBOutlet weak var parseLabel: UILabel!
 	
 	let locationManager = CLLocationManager()
 //	NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")
@@ -24,7 +26,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		22318: UIColor.blueColor()
 	]
 
-	override func viewDidLoad() {
+	override func viewDidLoad()
+	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		locationManager.delegate = self
@@ -33,8 +36,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 			locationManager.requestWhenInUseAuthorization()
 		}
 		locationManager.startRangingBeaconsInRegion(region)
-//		registerLocalNotification()
+		let query = PFQuery(className: "TestObject")
+		query.whereKey("foo", equalTo: "bar")
+		do
+		{
+			let parseArray = try query.findObjects()
+			for object : PFObject in parseArray
+			{
+				print(object.objectForKey("foo"))
+				self.parseLabel.text = object.objectForKey("foo") as? String
+			}
+		}
+		catch
+		{
+			print("Issue grabbing parse data")
+		}
 		
+	//	registerLocalNotification()
 	}
 
 	override func didReceiveMemoryWarning() {
