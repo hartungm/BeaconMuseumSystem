@@ -3,7 +3,15 @@ package goplus
 import (
     "fmt"
     "net/http"
+    "appengine/datastore"
 )
+
+type User struct {
+    username    string
+    password    string
+    parse_key   string
+    admin       bool
+}
 
 // init is called before the application starts.
 func init() {
