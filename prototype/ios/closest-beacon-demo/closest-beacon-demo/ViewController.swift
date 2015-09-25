@@ -36,6 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 			locationManager.requestWhenInUseAuthorization()
 		}
 		locationManager.startRangingBeaconsInRegion(region)
+		
 		let query = PFQuery(className: "TestObject")
 		query.whereKey("foo", equalTo: "bar")
 		do
