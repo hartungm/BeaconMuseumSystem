@@ -125,6 +125,8 @@
 		4C1255741BB725C700944BD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4C1255851BB7267600944BD8 /* libsqlite3.tbd */,
+				4C1255831BB7266C00944BD8 /* libz.tbd */,
 				4C1255811BB7265200944BD8 /* SystemConfiguration.framework */,
 				4C12557F1BB7264A00944BD8 /* StoreKit.framework */,
 				4C12557D1BB7264400944BD8 /* Security.framework */,
@@ -146,8 +148,6 @@
 		4CE679E81BB4EFC900E75480 = {
 			isa = PBXGroup;
 			children = (
-				4C1255851BB7267600944BD8 /* libsqlite3.tbd */,
-				4C1255831BB7266C00944BD8 /* libz.tbd */,
 				4CE679F31BB4EFC900E75480 /* MuseBeacon */,
 				4CE67A081BB4EFC900E75480 /* MuseBeaconTests */,
 				4CE67A131BB4EFC900E75480 /* MuseBeaconUITests */,
