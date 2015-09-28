@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 		
 		// Parse
 		Parse.enableLocalDatastore()
-		Parse.setApplicationId("gk8RoKxJSJkF2m7FC0s6GLm0EXEChErxwSnDZwAL", clientKey: "X9j0vsxTlqVpwfr3EOIYw5fnSf9JRqupA1HPB7YO")
+		Parse.setApplicationId("BYMFAF3TttqN60BhZ0dykTDeUsFhB2OEtpovqLVT", clientKey: "4Di9098kJSxeY7Ddx82qCYRxdzO47OQdnqTpE6ff")
 		PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 		return true
 	}

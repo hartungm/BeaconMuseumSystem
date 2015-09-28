@@ -23,6 +23,8 @@
 		4C1255821BB7265200944BD8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255811BB7265200944BD8 /* SystemConfiguration.framework */; };
 		4C1255841BB7266C00944BD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255831BB7266C00944BD8 /* libz.tbd */; };
 		4C1255861BB7267600944BD8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255851BB7267600944BD8 /* libsqlite3.tbd */; };
+		4C12558A1BB8B9CB00944BD8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
+		4C12558E1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12558D1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F41BB4EFC900E75480 /* AppDelegate.swift */; };
 		4CE679F71BB4EFC900E75480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F61BB4EFC900E75480 /* ViewController.swift */; };
 		4CE679FA1BB4EFC900E75480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679F81BB4EFC900E75480 /* Main.storyboard */; };
@@ -66,6 +68,10 @@
 		4C1255811BB7265200944BD8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4C1255831BB7266C00944BD8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		4C1255851BB7267600944BD8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		4C1255871BB8B9CA00944BD8 /* MuseBeacon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuseBeacon-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C1255881BB8B9CB00944BD8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		4C12558D1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuTableViewController.swift; path = ../SlideMenuTableViewController.swift; sourceTree = "<group>"; };
 		4CE679F11BB4EFC900E75480 /* MuseBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE679F41BB4EFC900E75480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CE679F61BB4EFC900E75480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +131,8 @@
 		4C1255741BB725C700944BD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4C1255881BB8B9CB00944BD8 /* SWRevealViewController.h */,
+				4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */,
 				4C1255851BB7267600944BD8 /* libsqlite3.tbd */,
 				4C1255831BB7266C00944BD8 /* libz.tbd */,
 				4C1255811BB7265200944BD8 /* SystemConfiguration.framework */,
@@ -141,6 +149,7 @@
 				4C12556A1BB725C400944BD8 /* ParseFacebookUtilsV4.framework */,
 				4C12556B1BB725C400944BD8 /* ParseTwitterUtils.framework */,
 				4C12556C1BB725C400944BD8 /* ParseUI.framework */,
+				4C1255871BB8B9CA00944BD8 /* MuseBeacon-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -168,6 +177,7 @@
 		4CE679F31BB4EFC900E75480 /* MuseBeacon */ = {
 			isa = PBXGroup;
 			children = (
+				4C12558D1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift */,
 				4CE679F41BB4EFC900E75480 /* AppDelegate.swift */,
 				4CE679F61BB4EFC900E75480 /* ViewController.swift */,
 				4CE679F81BB4EFC900E75480 /* Main.storyboard */,
@@ -259,6 +269,7 @@
 		4CE679E91BB4EFC900E75480 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "hartung-michael";
 				TargetAttributes = {
@@ -329,6 +340,8 @@
 			files = (
 				4CE679F71BB4EFC900E75480 /* ViewController.swift in Sources */,
 				4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */,
+				4C12558E1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift in Sources */,
+				4C12558A1BB8B9CB00944BD8 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MuseBeacon",
@@ -476,6 +490,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hartung-michael.MuseBeacon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MuseBeacon/MuseBeacon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -483,6 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MuseBeacon",
@@ -491,6 +508,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hartung-michael.MuseBeacon";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MuseBeacon/MuseBeacon-Bridging-Header.h";
 			};
 			name = Release;
 		};
