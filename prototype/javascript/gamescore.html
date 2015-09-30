@@ -12,19 +12,30 @@
 <html>
 <body>
 	<h1>GameScore</h1>
+
+	<button onclick="save()"> Save </button>
+	<!--button onclick="retrieve()"> Retrieve </button-->
+	<button onclick="display()"> Display </button>
+	<button onclick="update()"> Update </button>
+	<button onclick="delete()"> Delete </button>
+	
 	<div id="main">
-		<!-- Uncomment which JavaScript file you would like to run 
-		     This uses an online sameple with a gamescore entry
-			 Once everything is fuctional I'd like to modify it 
-			 with variable names relevant to our project -->
-		<!--script src="save.js"></script-->
+		<script src="save.js"></script>
 		<!--script src="retrieve.js"></script-->
-		<!--script src="display.js"></script-->
-		<!--script src="update.js"></script-->
-		<!--script src="delete.js"></script-->
+		<script src="display.js"></script>
+		<script src="update.js"></script>
+		<script src="delete.js"></script>
 	</div>
-	<div id="str">
-		<p>original text</p>
+	<div id="data">
+		<p id="name">
+			name: <span id="nspan"> first last </span>
+		</p>
+		<p id="score">
+			score: <span id="sspan"> 0000 </span>
+		</p>
+		<p id="cheat">
+			cheat mode: <span id="cspan"> X </span>
+		</p>
 	</div>
 
 </body>
