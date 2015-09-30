@@ -9,9 +9,20 @@ function myDelete() {
 	query.equalTo("playerName", "Jim Garfiel");
 	query.find({
 		success : function (results) {
-			alert("Successfully retrieved " + results.length + " scores.");
+			//alert("Successfully retrieved " + results.length + " scores.");
 			// Do something with the returned Parse.Object values
-			
+			results[0].destroy({
+				success : function (gameScore) {
+					// The object was deleted from the Parse Cloud.
+					alert('object deleted with objectId: ' + gameScore.id);
+				},
+				error : function (object, error) {
+					// The delete failed.
+					// error is a Parse.Error with an error code and message.
+					alert('object retrieved with objectId: ' + gameScore.id);
+				}
+			});
+
 		},
 		error : function (error) {
 			alert("Error: " + error.code + " " + error.message);
