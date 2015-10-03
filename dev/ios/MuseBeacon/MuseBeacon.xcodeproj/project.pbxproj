@@ -24,8 +24,9 @@
 		4C1255841BB7266C00944BD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255831BB7266C00944BD8 /* libz.tbd */; };
 		4C1255861BB7267600944BD8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255851BB7267600944BD8 /* libsqlite3.tbd */; };
 		4C12558A1BB8B9CB00944BD8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */; settings = {ASSET_TAGS = (); }; };
-		4C12558E1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C12558D1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4C657FFB1BB9FE31004D87E9 /* SliderMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */; settings = {ASSET_TAGS = (); }; };
+		4C8DCA1A1BBF6CF7000A5268 /* DefaultTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */; settings = {ASSET_TAGS = (); }; };
 		4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F41BB4EFC900E75480 /* AppDelegate.swift */; };
 		4CE679F71BB4EFC900E75480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F61BB4EFC900E75480 /* ViewController.swift */; };
 		4CE679FA1BB4EFC900E75480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679F81BB4EFC900E75480 /* Main.storyboard */; };
@@ -72,8 +73,9 @@
 		4C1255871BB8B9CA00944BD8 /* MuseBeacon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuseBeacon-Bridging-Header.h"; sourceTree = "<group>"; };
 		4C1255881BB8B9CB00944BD8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		4C12558D1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideMenuTableViewController.swift; path = ../SlideMenuTableViewController.swift; sourceTree = "<group>"; };
 		4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderMenuViewController.swift; sourceTree = "<group>"; };
+		4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTableCell.swift; sourceTree = "<group>"; };
+		4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTemplate.swift; sourceTree = "<group>"; };
 		4CE679F11BB4EFC900E75480 /* MuseBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE679F41BB4EFC900E75480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CE679F61BB4EFC900E75480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -179,10 +181,11 @@
 		4CE679F31BB4EFC900E75480 /* MuseBeacon */ = {
 			isa = PBXGroup;
 			children = (
-				4C12558D1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift */,
 				4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */,
+				4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */,
 				4CE679F41BB4EFC900E75480 /* AppDelegate.swift */,
 				4CE679F61BB4EFC900E75480 /* ViewController.swift */,
+				4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */,
 				4CE679F81BB4EFC900E75480 /* Main.storyboard */,
 				4CE679FB1BB4EFC900E75480 /* Assets.xcassets */,
 				4CE679FD1BB4EFC900E75480 /* LaunchScreen.storyboard */,
@@ -341,11 +344,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */,
 				4CE679F71BB4EFC900E75480 /* ViewController.swift in Sources */,
 				4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */,
-				4C12558E1BB8BC9B00944BD8 /* SlideMenuTableViewController.swift in Sources */,
 				4C657FFB1BB9FE31004D87E9 /* SliderMenuViewController.swift in Sources */,
 				4C12558A1BB8B9CB00944BD8 /* SWRevealViewController.m in Sources */,
+				4C8DCA1A1BBF6CF7000A5268 /* DefaultTemplate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
