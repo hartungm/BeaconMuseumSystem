@@ -27,6 +27,7 @@
 		4C657FFB1BB9FE31004D87E9 /* SliderMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		4C8DCA1A1BBF6CF7000A5268 /* DefaultTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */; settings = {ASSET_TAGS = (); }; };
+		4C8DCA1C1BBF9A44000A5268 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8DCA1B1BBF9A44000A5268 /* CoreLocation.framework */; };
 		4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F41BB4EFC900E75480 /* AppDelegate.swift */; };
 		4CE679FA1BB4EFC900E75480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679F81BB4EFC900E75480 /* Main.storyboard */; };
 		4CE679FC1BB4EFC900E75480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679FB1BB4EFC900E75480 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderMenuViewController.swift; sourceTree = "<group>"; };
 		4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTableCell.swift; sourceTree = "<group>"; };
 		4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTemplate.swift; sourceTree = "<group>"; };
+		4C8DCA1B1BBF9A44000A5268 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4CE679F11BB4EFC900E75480 /* MuseBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE679F41BB4EFC900E75480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CE679F91BB4EFC900E75480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				4C1255801BB7264A00944BD8 /* StoreKit.framework in Frameworks */,
 				4C12557E1BB7264400944BD8 /* Security.framework in Frameworks */,
 				4C12557C1BB7263E00944BD8 /* QuartzCore.framework in Frameworks */,
+				4C8DCA1C1BBF9A44000A5268 /* CoreLocation.framework in Frameworks */,
 				4C12557A1BB7263800944BD8 /* CoreGraphics.framework in Frameworks */,
 				4C1255781BB7263100944BD8 /* CFNetwork.framework in Frameworks */,
 				4C1255761BB7262600944BD8 /* AudioToolbox.framework in Frameworks */,
@@ -137,6 +140,7 @@
 				4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */,
 				4C1255851BB7267600944BD8 /* libsqlite3.tbd */,
 				4C1255831BB7266C00944BD8 /* libz.tbd */,
+				4C8DCA1B1BBF9A44000A5268 /* CoreLocation.framework */,
 				4C1255811BB7265200944BD8 /* SystemConfiguration.framework */,
 				4C12557F1BB7264A00944BD8 /* StoreKit.framework */,
 				4C12557D1BB7264400944BD8 /* Security.framework */,
