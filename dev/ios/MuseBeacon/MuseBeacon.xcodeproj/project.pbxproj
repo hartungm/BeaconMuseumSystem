@@ -28,7 +28,6 @@
 		4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		4C8DCA1A1BBF6CF7000A5268 /* DefaultTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */; settings = {ASSET_TAGS = (); }; };
 		4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F41BB4EFC900E75480 /* AppDelegate.swift */; };
-		4CE679F71BB4EFC900E75480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE679F61BB4EFC900E75480 /* ViewController.swift */; };
 		4CE679FA1BB4EFC900E75480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679F81BB4EFC900E75480 /* Main.storyboard */; };
 		4CE679FC1BB4EFC900E75480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679FB1BB4EFC900E75480 /* Assets.xcassets */; };
 		4CE679FF1BB4EFC900E75480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE679FD1BB4EFC900E75480 /* LaunchScreen.storyboard */; };
@@ -78,7 +77,6 @@
 		4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTemplate.swift; sourceTree = "<group>"; };
 		4CE679F11BB4EFC900E75480 /* MuseBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuseBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE679F41BB4EFC900E75480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4CE679F61BB4EFC900E75480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4CE679F91BB4EFC900E75480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CE679FB1BB4EFC900E75480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CE679FE1BB4EFC900E75480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */,
 				4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */,
 				4CE679F41BB4EFC900E75480 /* AppDelegate.swift */,
-				4CE679F61BB4EFC900E75480 /* ViewController.swift */,
 				4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */,
 				4CE679F81BB4EFC900E75480 /* Main.storyboard */,
 				4CE679FB1BB4EFC900E75480 /* Assets.xcassets */,
@@ -345,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */,
-				4CE679F71BB4EFC900E75480 /* ViewController.swift in Sources */,
 				4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */,
 				4C657FFB1BB9FE31004D87E9 /* SliderMenuViewController.swift in Sources */,
 				4C12558A1BB8B9CB00944BD8 /* SWRevealViewController.m in Sources */,

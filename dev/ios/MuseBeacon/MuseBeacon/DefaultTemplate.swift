@@ -32,13 +32,11 @@ class DefaultTemplate: UIViewController {
 		openMenuButton.target = self.revealViewController()
 		openMenuButton.action = Selector("revealToggle:")
 		self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-//		self.imageView = UIImageView()
 	}
 	
 	override func didReceiveMemoryWarning()
 	{
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 
 }

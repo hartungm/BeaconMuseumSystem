@@ -12,23 +12,7 @@ import Bolts
 import ParseUI
 
 class SliderMenuViewController: PFQueryTableViewController {
-	
-//	override init(style: UITableViewStyle, className: String?) {
-//		super.init(style: style, className: className)
-//		parseClassName = "Todo"
-//		pullToRefreshEnabled = true
-//		paginationEnabled = true
-//		objectsPerPage = 25
-//	}
-//	
-//	required init?(coder aDecoder: NSCoder) {
-//		super.init(coder: aDecoder)
-//		parseClassName = "Todo"
-//		pullToRefreshEnabled = true
-//		paginationEnabled = true
-//		objectsPerPage = 25
-//	}
-	
+
 	override func viewWillAppear(animated: Bool)
 	{
 		super.viewWillAppear(animated)
@@ -36,11 +20,9 @@ class SliderMenuViewController: PFQueryTableViewController {
 	
 	override func queryForTable() -> PFQuery
 	{
+		let queryArray = ["10", "20"]
 		let query = PFQuery(className: "DefaultTemplate")
-//		if self.objects!.count == 0
-//		{
-//			query.cachePolicy =
-//		}
+		query.whereKey("BeaconID", containedIn: queryArray)
 		return query
 	}
 	
@@ -71,8 +53,6 @@ class SliderMenuViewController: PFQueryTableViewController {
 		if ( selectedCell.type == "DefaultTemplate")
 		{
 			let destination : DefaultTemplate = navController.childViewControllers[0] as! DefaultTemplate
-			print(selectedCell.titleLabel.text!)
-			print(selectedCell.slideText)
 			destination.exhibitTitle = selectedCell.titleLabel.text!
 			destination.exhibitText = selectedCell.slideText
 			selectedCell.slideImage.getDataInBackgroundWithBlock
