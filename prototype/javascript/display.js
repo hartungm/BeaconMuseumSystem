@@ -11,7 +11,6 @@ function display() {
 
 	query.get(objID, {
 		success : function (gameScore) {
-			// The object was retrieved successfully.
 			//alert('object retrieved with objectId: ' + gameScore.id);
 
 			var playerName = gameScore.get("playerName");
@@ -21,7 +20,6 @@ function display() {
 			document.getElementById("nspan").innerHTML = playerName;
 			document.getElementById("sspan").innerHTML = score;
 			document.getElementById("cspan").innerHTML = cheat;
-
 		},
 		error : function (object, error) {
 			// The object was not retrieved successfully.
