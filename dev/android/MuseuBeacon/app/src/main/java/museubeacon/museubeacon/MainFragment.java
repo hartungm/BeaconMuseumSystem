@@ -1,8 +1,8 @@
 package museubeacon.museubeacon;
 
-import android.content.Context;
+import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,7 @@ public class MainFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static MainFragment newInstance(int sectionNumber) {
+    public static Fragment newInstance(int sectionNumber) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -33,15 +33,15 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.main_fragment, container, false);
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        ((MainActivity) context).onSectionAttached(
+    @SuppressWarnings("deprecation")
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((MainActivity) activity).onSectionAttached(
                 getArguments().getInt(ARG_SECTION_NUMBER));
     }
 }
