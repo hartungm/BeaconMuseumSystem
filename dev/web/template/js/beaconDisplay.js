@@ -19,9 +19,10 @@ function beaconDisplay() {
   query.each(
     function myF(object){
       alert('selected objectID: ' + object.id);
-      $('#table tr:last').after('<tr><td>' + object.id + '</td><td>' + object.get('BeaconID') + '</td></tr>');
+      //$('#table tr:last').after('<tr><td>' + object.id + '</td><td>' + object.get('BeaconID') + '</td></tr>');
+      $("#container").append("<div>" + object.id + "\t" + object.get('BeaconID') + "</div>");
     });
 
   // why is this executing first?
-  alert("number of objects that matched query: ");
+  //alert("number of objects that matched query: ");
 }
