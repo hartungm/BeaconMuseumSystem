@@ -18,11 +18,18 @@ function beaconDisplay() {
 
   query.each(
     function myF(object){
-      alert('selected objectID: ' + object.id);
+      var imgFile = object.get("Image");
+      console.log(imgFile);
+      var imgURL = imgFile.url();
+      console.log(imgURL);
+      //$("Image")[0].src = imgFile.url();
+
+      // When using plebian tables...
       //$('#table tr:last').after('<tr><td>' + object.id + '</td><td>' + object.get('BeaconID') + '</td></tr>');
-      $("#container").append("<div>" + object.id + "\t" + object.get('BeaconID') + "</div>");
+
+      $("#container").append("<div>" + object.id + " " + object.get('BeaconID') + " " + object.get('Title') + " " + object.get('Text') + "</div>");
+      $("#container").append('<div> Image: <img src="imgURL" alt="misplaced photo"> </div>');
     });
 
-  // why is this executing first?
-  //alert("number of objects that matched query: ");
+  //https://www.parse.com/questions/retrieve-image-using-javascript-api
 }
