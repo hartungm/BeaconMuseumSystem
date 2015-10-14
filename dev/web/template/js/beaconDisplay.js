@@ -28,7 +28,7 @@ function beaconDisplay() {
       //$('#table tr:last').after('<tr><td>' + object.id + '</td><td>' + object.get('BeaconID') + '</td></tr>');
 
       $("#container").append("<div>" + object.id + " " + object.get('BeaconID') + " " + object.get('Title') + " " + object.get('Text') + "</div>");
-      $("#container").append('<div> Image: <img src="imgURL" alt="misplaced photo"> </div>');
+      $("#container").append('<div> Image: <img src="'+ imgURL + '" alt="misplaced photo"> </div>');
     });
 
   //https://www.parse.com/questions/retrieve-image-using-javascript-api
