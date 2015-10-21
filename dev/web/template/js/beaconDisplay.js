@@ -21,11 +21,16 @@ function beaconDisplay() {
       var imgFile = object.get("Image");
       //console.log(imgFile);
       var imgURL = imgFile.url();
-      console.log(imgURL);
+      //console.log(imgURL);
 
       /*$("#container").append("<div class='row'>" + object.id + " " + object.get('BeaconID') + " " + object.get('Title') + " " + object.get('Text') + "</div>"); */
-      $("#container").append("<div class='row'><span>" + object.id + " </span><span> " + object.get('BeaconID') + " </span><span> " + object.get('Title') + " </span><span> " + object.get('Text') + "</span></div>");
-      $("#container").append("<div class='imgRow'><img src='" + imgURL + "' alt='misplaced photo' style='visibility:hidden;' id='img'> </div>");
+      $("#container").append("<div class='row'><span>" 
+        + object.id + " </span><span> " 
+        + object.get('BeaconID') + " </span><span> " 
+        + object.get('Title') + " </span><span> " + object.get('Text') 
+        + "</span><span id='hover'> imagename </span><button onclick='myEdit()'> edit </button> <button onclick='myDelete()'> delete </button></div>");
+      //$("#container").append("<div class='imgRow'><img src='" + imgURL + "' alt='misplaced photo' style='visibility:hidden;' id='img'> </div>");
+
       //$("#container").append("<a href='" + imgURL + "' onmouseover='" + img.style.visibility + " ='visible'; img.src="earth.jpg";'> image link </a>");
       //$("#container").append("<div class='imgRow'><img src='" + imgURL + "' alt='misplaced photo'> </div>");
       // OR all in same line?
@@ -34,10 +39,18 @@ function beaconDisplay() {
         + object.get('BeaconID') + " </span><span> " + object.get('Title') + " </span><span> " 
         + object.get('Text') + " </span><span> " + "<img src='" + imgFile.url() 
         + "' alt='misplaced photo'> </span></div>");
-      */
-    });
+*/
+});
 
   //https://www.parse.com/questions/retrieve-image-using-javascript-api
   //https://linkpeek.com/blog/display-image-on-hover-using-html-javascript-and-css.html
   //http://www.webdeveloper.com/forum/showthread.php?255807-mouse-over-links-show-images
+}
+
+function myEdit(){
+  alert( "Handler for edit click called." );
+}
+
+function myDelete(){
+  alert( "Handler for delete click called." );
 }
