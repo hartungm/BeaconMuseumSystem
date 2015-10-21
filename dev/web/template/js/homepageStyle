@@ -1,0 +1,27 @@
+body{
+  background-color: C2EBFF;
+}
+#titles span{
+  width: 50%;
+  margin: 0px, 25px, 0px, 25px;
+  padding: 5px;
+  border: 3px solid #666;
+  background: #75D1FF;
+  font-weight: bold;	
+}
+
+.row span{
+  width: 50%;
+  margin: 0px, 25px, 0px, 25px;
+  padding: 5px;
+  border: 3px solid #666;
+  background: #75D1FF;
+}
+
+.imgrow{
+  width: 50%;
+  margin: 0px, 25px, 0px, 25px;
+  padding: 5px;
+  border: 3px solid #666;
+  background: #75D1FF;
+}
