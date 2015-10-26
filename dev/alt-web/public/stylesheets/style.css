@@ -1,10 +1,20 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #6f5499;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    color: white;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
+}
+
+a:hover {
+    color: #00B7FF;
+    text-decoration: none;
 }
 
 .form-signin{
@@ -47,7 +57,7 @@ a {
 }
 .account-wall{
     margin-top: 20px;
-    padding: 40px 0px 20px 0px;
+    padding: 20px 0px 15px 0px;
     background-color: #f7f7f7;
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -60,28 +70,30 @@ a {
     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);	
+    color: #666;
 }
 .login-title{
-    color: #555;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     display: block;
 }
 .profile-img{
     width: 96px;
-    height: 96px;
+    height: 60px;
+    font-size: 60px;
     margin: 0 auto 10px;
     display: block;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;
+    color: #428bca;
 }
 .new-account{
     display: block;
     margin-top: 10px;
 }
 h1.error-message{
-    color: red;
+    color: white;
 }
 ul.user-details{
     list-style: none;
