@@ -14,7 +14,7 @@ import CoreLocation
 
 class SliderMenuViewController: PFQueryTableViewController, CLLocationManagerDelegate
 {
-	
+	let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 	let locationManager = CLLocationManager()
 	var beaconArray: [String] = []
 	let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "Estimotes")
@@ -42,13 +42,32 @@ class SliderMenuViewController: PFQueryTableViewController, CLLocationManagerDel
 		for beacon in knownBeacons
 		{
 			let beaconString = "\(beacon.major)-\(beacon.minor)"
-			print(beaconString)
 			knownBeaconArray.append(beaconString)
+			if(appDelegate.beaconTimes[beaconString] == nil)
+			{
+				appDelegate.beaconTimes[beaconString] = NSDate().timeIntervalSince1970
+			}
+		}
+		for (beaconName, startTime) in appDelegate.beaconTimes
+		{
+			var included = false
+			for beacon in knownBeacons
+			{
+				let beaconString = "\(beacon.major)-\(beacon.minor)"
+				if(beaconString == beaconName)
+				{
+					included = true
+				}
+			}
+			if !included
+			{
+				let totalTime = NSDate().timeIntervalSince1970 - startTime
+			}
 		}
 		if knownBeaconArray != beaconArray
 		{
 			beaconArray = knownBeaconArray
-			self.tableView.reloadData()
+			self.loadObjects()
 		}
 	}
 	

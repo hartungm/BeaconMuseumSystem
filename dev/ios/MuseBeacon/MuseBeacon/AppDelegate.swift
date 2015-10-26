@@ -15,11 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
 
 	var window: UIWindow?
+	var beaconTimes = [String: Double]()
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
 	{
-		
 		// Parse
 		Parse.enableLocalDatastore()
 		Parse.setApplicationId("BYMFAF3TttqN60BhZ0dykTDeUsFhB2OEtpovqLVT", clientKey: "4Di9098kJSxeY7Ddx82qCYRxdzO47OQdnqTpE6ff")
@@ -53,7 +53,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 	{
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
-
-
 }
 
