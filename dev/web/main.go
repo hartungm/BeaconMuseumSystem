@@ -6,11 +6,19 @@ import (
     "regexp"
     "appengine"
     "appengine/datastore"
+    "fmt"
 )
 
+//the `datastore` declarations seem to be unnecessary
+//datastore objects return as [{prop, prop...}]
+//i don't like it, but we can work with it
+//try GQL?
+
+//i should also try to see if i can just get datastore to return key-value pairs
+//otherwise, i can just build a json string and store that in the datastore instead
 type BeaconUser struct {
-    Name string
-    ParseKey string
+    MuseumName string   `datastore:"MuseumName"`
+    ParseKey string     `datastore:"ParseKey"`
 }
 
 var templates = template.Must(template.ParseFiles("template/home.html"))
@@ -41,7 +49,19 @@ func renderTemplate(w http.ResponseWriter, tmpl string, u *BeaconUser) {
 
 func rootHandler(w http.ResponseWriter, r *http.Request, museumName string) {
     c := appengine.NewContext(r)
-    q := datastore.NewQuery("User").Filter("Name =", museumName)
+    //HACK
+    //TODO insert datastore element here to see if that works
+    //(here testing datastore access)
+    //insertUser := BeaconUser {
+    //    MuseumName: museumName,
+    //    ParseKey:   "AnotherTestKey",
+    //}
+    //datastore.Put(c, datastore.NewIncompleteKey(c, "BeaconUser", nil), &insertUser)
+    ///HACK
+
+    //TODO i feel like we're doing the key wrong here...as in don't have one.  Figure it out
+    //TODO ok, i finally got a query to work.  The hack isn't working because of the apply delay, which SHOULDN'T matter in production. the json is not what I expected, fix the json stuff and maybe it'll be better
+    q := datastore.NewQuery("BeaconUser").KeysOnly()//.Filter("MuseumName =", museumName)
 
     results := make([]BeaconUser, 1)
 
@@ -49,11 +69,12 @@ func rootHandler(w http.ResponseWriter, r *http.Request, museumName string) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-    if results[0].Name == "" {
-        http.NotFound(w, r)
-        return
-    }
-    renderTemplate(w, "home", &results[0])
+    fmt.Fprint(w, results)
+    //if results[0].MuseumName == "" {
+        //http.NotFound(w, r)
+        //return
+    //}
+    //renderTemplate(w, "home", &results[0])
 
 }
 
