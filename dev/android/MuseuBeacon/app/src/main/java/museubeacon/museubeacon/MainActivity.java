@@ -3,13 +3,16 @@ package museubeacon.museubeacon;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,6 +25,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -29,8 +33,8 @@ public class MainActivity extends Activity {
 
     private DrawerLayout drawerLayout;
     private ListView beaconDrawer;
-    private ArrayAdapter beaconAdapter;
-    private ArrayList<String> beaconList;
+    private ArrayAdapter<String> beaconAdapter;
+    private BroadcastReceiver receiver;
     private ActionBarDrawerToggle drawerToggle;
 
     private BeaconService beaconService;
@@ -39,6 +43,18 @@ public class MainActivity extends Activity {
 
     private int currentSelectedPosition = 0;
     private CharSequence title;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter(BeaconService.BEACON_UPDATE));
+    }
+
+    @Override
+    protected void onStop() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
+        super.onStop();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +70,7 @@ public class MainActivity extends Activity {
         beaconDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
+                selectItem(position, beaconAdapter.getItem(position));
             }
         });
 
@@ -62,21 +78,26 @@ public class MainActivity extends Activity {
         if(actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
+
+            beaconAdapter = new ArrayAdapter<>(
+                    actionBar.getThemedContext(),
+                    android.R.layout.simple_list_item_activated_1,
+                    android.R.id.text1,
+                    new ArrayList<String>()
+            );
+            beaconDrawer.setAdapter(beaconAdapter);
         }
 
-        beaconList = new ArrayList<>();
-        beaconList.add(getString(R.string.title_section1));
-        beaconList.add(getString(R.string.title_section2));
-        beaconList.add(getString(R.string.title_section3));
+        doBindService();
 
-        beaconAdapter = new ArrayAdapter<>(
-                actionBar.getThemedContext(),
-                android.R.layout.simple_list_item_activated_1,
-                android.R.id.text1,
-                beaconList
-        );
-
-        beaconDrawer.setAdapter(beaconAdapter);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                List<String> beaconList = intent.getStringArrayListExtra(BeaconService.BEACON_UPDATE);
+                beaconAdapter.clear();
+                beaconAdapter.addAll(beaconList);
+            }
+        };
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
@@ -103,7 +124,7 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null) {
             drawerLayout.openDrawer(GravityCompat.START);
             currentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
-            selectItem(currentSelectedPosition);
+            selectItem(currentSelectedPosition, beaconAdapter.getItem(currentSelectedPosition));
             beaconDrawer.setItemChecked(currentSelectedPosition, true);
         }
 
@@ -116,17 +137,16 @@ public class MainActivity extends Activity {
         doUnbindService();
     }
 
-    private void selectItem(int position) {
+    private void selectItem(int position, String beaconID) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, MainFragment.newInstance(position + 1))
+                .replace(R.id.fragment_container, MainFragment.newInstance(beaconID))
                 .commit();
 
         currentSelectedPosition = position;
-        if (beaconDrawer != null) {
-            beaconDrawer.setItemChecked(position, true);
-        }
+        beaconDrawer.setItemChecked(currentSelectedPosition, true);
+
         if (drawerLayout != null) {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
@@ -144,18 +164,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                title = getString(R.string.title_section1);
-                break;
-            case 2:
-                title = getString(R.string.title_section2);
-                break;
-            case 3:
-                title = getString(R.string.title_section3);
-                break;
-        }
+    public void onSectionAttached(String title) {
+        this.title = title;
     }
 
     public void restoreActionBar() {
@@ -186,7 +196,6 @@ public class MainActivity extends Activity {
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            doBindService();
             return true;
         }
 
@@ -211,6 +220,8 @@ public class MainActivity extends Activity {
         public void onServiceConnected(ComponentName className, IBinder service) {
             beaconService = ((BeaconService.BeaconBinder)service).getService();
             Toast.makeText(MainActivity.this, "Beacon Service Connected", Toast.LENGTH_SHORT).show();
+
+            beaconService.startMonitoring();
         }
 
         public void onServiceDisconnected(ComponentName className) {

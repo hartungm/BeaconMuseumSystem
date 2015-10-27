@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -26,19 +25,19 @@ public class MainFragment extends Fragment {
      * The fragment argument representing the section number for this
      * fragment.
      */
-    private static final String ARG_SECTION_NUMBER = "section_number";
-    private static final String APPLICATION_ID = "BYMFAF3TttqN60BhZ0dykTDeUsFhB2OEtpovqLVT";
-    private static final String CLIENT_KEY = "4Di9098kJSxeY7Ddx82qCYRxdzO47OQdnqTpE6ff";
     private static final String TEMPLATE_ID = "WQhNeP01dY";
+    private final static String BEACON_ID = "beacon_id";
+
+    private String beaconID;
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static Fragment newInstance(int sectionNumber) {
+    public static Fragment newInstance(String beaconID) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putString(BEACON_ID, beaconID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,8 +53,7 @@ public class MainFragment extends Fragment {
         final TextView titleView = (TextView) viewToReturn.findViewById(R.id.fragmentTitle);
         final TextView textView = (TextView) viewToReturn.findViewById(R.id.fragmentText);
         final ImageView imageView = (ImageView) viewToReturn.findViewById(R.id.fragmentImage);
-        Parse.enableLocalDatastore(getContext());
-        Parse.initialize(getContext(), APPLICATION_ID, CLIENT_KEY);
+
         /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Main");
         query.getInBackground("WQhNeP01dY", new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
@@ -86,7 +84,17 @@ public class MainFragment extends Fragment {
         });
         */
         ParseQuery<ParseObject> query = ParseQuery.getQuery("DefaultTemplate");
-        query.getInBackground("QPTjCZpUjV", new GetCallback<ParseObject>() {
+
+        String objectID = null;
+        if(beaconID.equals("29121:22674")) {
+            objectID = "muk1jro3GV";
+        } else if(beaconID.equals("40109:57375")) {
+            objectID = "JnSBNP9dME";
+        } else if(beaconID.equals("32500:61345")) {
+            objectID = "hiOPfchAqo";
+        }
+
+        query.getInBackground(objectID, new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (e == null) {
                     titleView.setText(object.getString("Title"));
@@ -111,7 +119,7 @@ public class MainFragment extends Fragment {
     @SuppressWarnings("deprecation")
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((MainActivity) activity).onSectionAttached(
-                getArguments().getInt(ARG_SECTION_NUMBER));
+        beaconID = getArguments().getString(BEACON_ID);
+        ((MainActivity) activity).onSectionAttached(beaconID);
     }
 }
