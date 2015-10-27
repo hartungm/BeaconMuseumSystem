@@ -14,10 +14,11 @@ function update() {
 			// only cheatMode and score will get sent to the cloud
 			// playerName hasn't changed.
 			// Parse only resends 'dirty' data
-			gameScore.set("score", 1324);
+			var score = Math.floor(Math.random() * 1000) + 1;
+			gameScore.set("score", score);
 			gameScore.set("cheatMode", true);
 			gameScore.save();
-			alert('Successfully updated gamescore with id' + gameScore.id);
+			//alert('Successfully updated gamescore with id' + gameScore.id);
 		},
 		error : function (object, error) {
 			// The object was not retrieved successfully.
