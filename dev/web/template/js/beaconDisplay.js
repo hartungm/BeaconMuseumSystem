@@ -13,15 +13,28 @@ function beaconDisplay() {
 
   query.each(
     function myF(object){
-      $("#container").append("<div class='row'><span onclick='titleClick()'>" 
+      $("#listContainer").append("<div class='row'><span onclick='titleClick(object)'>" 
         + object.get('Title') + " </span><span> " 
         + object.get('Collection') + "</span><button onclick='myDelete()'> delete </button></div>");
     });
 }
 
-function titleClick(){
-  alert("Handler for title click called");
-  $('#')
+function titleClick(object){
+  alert("Handler for title click called " + object.get('Title'));
+  //title
+  //collection
+  //beaconID
+  //text
+  //image
+  //edit button
+
+  /*
+  $('#recordContainer').append("<div> Title: " + object.get('Title')
+   + " Collection: " + object.get('Collection') 
+   + " BeaconID: " + object.get('beaconID') 
+   + " Text: " + object.get('Text') 
+   + "</div>");
+  */
 }
 
 /*
