@@ -13,14 +13,14 @@ function beaconDisplay() {
 
   query.each(
     function myF(object){
-      $("#listContainer").append("<div class='row'><span onclick='titleClick(object)'>" 
+      $("#listContainer").append("<div class='row'><span onclick='titleClick(/*object*/)'>" 
         + object.get('Title') + " </span><span> " 
         + object.get('Collection') + "</span><button onclick='myDelete()'> delete </button></div>");
     });
 }
 
-function titleClick(object){
-  alert("Handler for title click called " + object.get('Title'));
+function titleClick(/*object*/){
+  alert("Handler for title click called " /* + object.get('Title') */);
   //title
   //collection
   //beaconID
