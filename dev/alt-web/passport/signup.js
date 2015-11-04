@@ -4,12 +4,17 @@ var bCrypt = require('bcrypt-nodejs');
 
 module.exports = function(passport){
 
-	passport.use('signup', new LocalStrategy({
+    passport.use('signup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
 
-            findOrCreateUser = function(){
+            findOrCreateUser = function() {
+                // check to ensure current user has permissions
+                if (req.session.user.admin != true) {
+                    console.log('User does not have permission to create users');
+                    return done(null, false, req.flash('message','Insufficient Permissions'));
+                }
                 // find a user in Mongo with provided username
                 User.findOne({ 'username' :  username }, function(err, user) {
                     // In case of any error, return using the done method
@@ -50,7 +55,7 @@ module.exports = function(passport){
             // Delay the execution of findOrCreateUser and execute the method
             // in the next tick of the event loop
             process.nextTick(findOrCreateUser);
-        })
+        });
     );
 
     // Generates hash using bCrypt
