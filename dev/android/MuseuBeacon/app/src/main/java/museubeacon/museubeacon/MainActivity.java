@@ -27,17 +27,21 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import museubeacon.museubeacon.template.MainFragment;
+import museubeacon.museubeacon.template.TemplateObject;
+
 public class MainActivity extends Activity {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
     private DrawerLayout drawerLayout;
-    private ListView beaconDrawer;
-    private ArrayAdapter<String> beaconAdapter;
+    private ListView templateDrawer;
+    private ArrayAdapter<String> templateDisplayAdapter;
     private BroadcastReceiver receiver;
     private ActionBarDrawerToggle drawerToggle;
 
     private BeaconService beaconService;
+    private List<TemplateObject> templateList;
     private ServiceConnection beaconServiceConnection = new BeaconServiceConnection();
     private boolean isBound;
 
@@ -62,15 +66,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main_activity);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        beaconDrawer = (ListView) findViewById(R.id.beacon_drawer);
+        templateDrawer = (ListView) findViewById(R.id.beacon_drawer);
         title = getTitle();
 
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
-        beaconDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        templateDrawer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position, beaconAdapter.getItem(position));
+                selectItem(position, templateList.get(position));
             }
         });
 
@@ -79,13 +83,13 @@ public class MainActivity extends Activity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
 
-            beaconAdapter = new ArrayAdapter<>(
+            templateDisplayAdapter = new ArrayAdapter<>(
                     actionBar.getThemedContext(),
                     android.R.layout.simple_list_item_activated_1,
                     android.R.id.text1,
                     new ArrayList<String>()
             );
-            beaconDrawer.setAdapter(beaconAdapter);
+            templateDrawer.setAdapter(templateDisplayAdapter);
         }
 
         doBindService();
@@ -93,9 +97,10 @@ public class MainActivity extends Activity {
         receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                List<String> beaconList = intent.getStringArrayListExtra(BeaconService.BEACON_UPDATE);
-                beaconAdapter.clear();
-                beaconAdapter.addAll(beaconList);
+                templateList = beaconService.getTemplateList();
+
+                templateDisplayAdapter.clear();
+                templateDisplayAdapter.addAll(beaconService.getDisplayList());
             }
         };
 
@@ -124,8 +129,8 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null) {
             drawerLayout.openDrawer(GravityCompat.START);
             currentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
-            selectItem(currentSelectedPosition, beaconAdapter.getItem(currentSelectedPosition));
-            beaconDrawer.setItemChecked(currentSelectedPosition, true);
+            selectItem(currentSelectedPosition, templateList.get(currentSelectedPosition));
+            templateDrawer.setItemChecked(currentSelectedPosition, true);
         }
 
         drawerLayout.setDrawerListener(drawerToggle);
@@ -133,19 +138,19 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         doUnbindService();
+        super.onDestroy();
     }
 
-    private void selectItem(int position, String beaconID) {
+    private void selectItem(int position, TemplateObject obj) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, MainFragment.newInstance(beaconID))
+                .replace(R.id.fragment_container, MainFragment.newInstance(obj))
                 .commit();
 
         currentSelectedPosition = position;
-        beaconDrawer.setItemChecked(currentSelectedPosition, true);
+        templateDrawer.setItemChecked(currentSelectedPosition, true);
 
         if (drawerLayout != null) {
             drawerLayout.closeDrawer(GravityCompat.START);
