@@ -1,6 +1,7 @@
 package museubeacon.museubeacon;
 
 import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
@@ -11,9 +12,21 @@ import android.widget.Toast;
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
 import com.estimote.sdk.Region;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import museubeacon.museubeacon.template.TemplateObject;
 
 public class BeaconService extends Service {
 
@@ -21,7 +34,10 @@ public class BeaconService extends Service {
     public final static String UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
 
     private final IBinder binder = new BeaconBinder();
-    private final ArrayList<String> beaconList = new ArrayList<>();
+    private final List<TemplateObject> templateList = new ArrayList<>();
+    private final List<String> displayList = new ArrayList<>();
+
+    private final Map<String, Set<String>> templateMap = new HashMap<>();
 
     private BeaconManager beaconManager;
     private LocalBroadcastManager broadcaster;
@@ -30,6 +46,31 @@ public class BeaconService extends Service {
     public void onCreate() {
         Toast.makeText(this, "Service created", Toast.LENGTH_SHORT).show();
         broadcaster = LocalBroadcastManager.getInstance(this);
+
+        List<ParseObject> list = new ArrayList<>();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Main");
+        try {
+            list.addAll(query.find());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        for (ParseObject obj : list) {
+            JSONArray arr = obj.getJSONArray("TemplateNames");
+
+            if (arr != null) {
+                Set<String> templateNames = new HashSet<>();
+                for (int i = 0; i < arr.length(); i++) {
+                    try {
+                        templateNames.add(arr.getString(i));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                templateMap.put(obj.getString("BeaconID"), templateNames);
+            }
+        }
     }
 
     @Override
@@ -38,6 +79,21 @@ public class BeaconService extends Service {
     }
 
     public void startMonitoring() {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        // Hack to get it to work in the emulator
+        if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
+            List<Beacon> dummyBeacons = new ArrayList<>();
+            Beacon beacon1 = new Beacon(UUID, "", "", 32500, 61345, 0, 0);
+            Beacon beacon2 = new Beacon(UUID, "", "", 40109, 57375, 0, 0);
+            Beacon beacon3 = new Beacon(UUID, "", "", 29121, 22674, 0, 0);
+            dummyBeacons.add(beacon1);
+            dummyBeacons.add(beacon2);
+            dummyBeacons.add(beacon3);
+
+            updateBeaconList(dummyBeacons);
+            return;
+        }
+
         beaconManager = new BeaconManager(this);
         beaconManager.setForegroundScanPeriod(3000, 20000);
 
@@ -62,18 +118,55 @@ public class BeaconService extends Service {
     }
 
     public void updateBeaconList(List<Beacon> beacons) {
-        beaconList.clear();
+        templateList.clear();
+        displayList.clear();
+
+        Map<String, Set<String>> templateToBeaconMap = new HashMap<>();
         for(Beacon beacon : beacons) {
-            beaconList.add(beacon.getMajor() + ":" + beacon.getMinor());
+            String beaconID = beacon.getMajor() + "-" + beacon.getMinor();
+
+            Set<String> templates = templateMap.get(beaconID);
+            if(templates != null) {
+                for (String template : templates) {
+                    Set<String> beaconIDs = templateToBeaconMap.get(template);
+                    if (beaconIDs == null) {
+                        beaconIDs = new HashSet<>();
+                        beaconIDs.add(beaconID);
+                        templateToBeaconMap.put(template, beaconIDs);
+                    } else {
+                        beaconIDs.add(beaconID);
+                    }
+                }
+            }
         }
 
-        if(beaconList.isEmpty()) {
-            beaconList.add("No beacons in range");
+        for(Map.Entry<String, Set<String>> template : templateToBeaconMap.entrySet()) {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery(template.getKey());
+            query.whereContainedIn("BeaconID", template.getValue());
+
+            try {
+                for(ParseObject obj : query.find()) {
+                    templateList.add(new TemplateObject(obj));
+                    displayList.add(obj.getString("Title"));
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
 
-        Intent intent = new Intent(BEACON_UPDATE);
-        intent.putExtra(BEACON_UPDATE, beaconList);
-        broadcaster.sendBroadcast(intent);
+        if(templateList.isEmpty()) {
+            displayList.add("No beacons in range");
+        }
+
+        broadcaster.sendBroadcast(new Intent(BEACON_UPDATE));
+    }
+
+    public List<TemplateObject> getTemplateList() {
+        return templateList;
+    }
+
+    public List<String> getDisplayList() {
+        return displayList;
     }
 
     @Override
