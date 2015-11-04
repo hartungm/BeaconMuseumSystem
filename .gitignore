@@ -1,0 +1,2 @@
+# Ignore local NodeJS server output
+npm-debug.log
