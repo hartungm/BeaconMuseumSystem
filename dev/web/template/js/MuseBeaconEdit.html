@@ -1,0 +1,46 @@
+<html>
+<head>
+	<script src="http://www.parsecdn.com/js/parse-1.6.4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<meta charset="utf-8">
+	<title>MuseBeacon Edit</title>
+	<meta name="description" content="MuseBeacon entry edit form">
+	<meta name="viewport" content="width=device-width">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+	<link rel="stylesheet" type="text/css" href="formStyle">
+</head>
+
+<body onload="parsePull()">
+	<div id='header'>
+		<h1>MuseBeacon Edit Form</h1>
+	</div>
+
+	<form>
+		<div>
+			BeaconID:
+			<input type='text' name='beaconID' value=''> <!-- populate value from Parse onload -->
+		</div>
+		<div>
+			Title:
+			<input type='text' name='title' value=''>
+		</div>
+		<div>
+			Description:
+			<input type='text' name='desc' value=''>
+		</div>
+		<div>
+			Image:<br>
+			<!-- Get image from Parse -->
+		</div>
+		<div>
+			Upload new image:<br>
+			<input type='file' name='img'>
+		</div>
+		<input type='submit' value='Submit'>
+	</form>
+
+	<div id="time"> TIME: <span id="tspan"></span></div>
+	<script src="beaconEdit.js"></script>
+</body>
+</html>
