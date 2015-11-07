@@ -55,7 +55,7 @@ module.exports = function(passport){
             // Delay the execution of findOrCreateUser and execute the method
             // in the next tick of the event loop
             process.nextTick(findOrCreateUser);
-        });
+        })
     );
 
     // Generates hash using bCrypt
