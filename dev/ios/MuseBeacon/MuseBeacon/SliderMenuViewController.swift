@@ -62,6 +62,7 @@ class SliderMenuViewController: PFQueryTableViewController, CLLocationManagerDel
 			if !included
 			{
 				let totalTime = NSDate().timeIntervalSince1970 - startTime
+				print(totalTime)
 			}
 		}
 		if knownBeaconArray != beaconArray

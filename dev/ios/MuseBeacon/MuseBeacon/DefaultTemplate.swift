@@ -12,15 +12,16 @@ class DefaultTemplate: UIViewController {
 	
 	@IBOutlet weak var openMenuButton: UIBarButtonItem!
 	@IBOutlet weak var imageView: UIImageView!
-	@IBOutlet weak var textLabel: UILabel!
 	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var scrollTextView: UITextView!
 	var exhibitTitle = ""
 	var exhibitText = ""
 	var image = UIImage()
 	
+	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		self.textLabel.text = self.exhibitText
+		self.scrollTextView.text = self.exhibitText
 		self.titleLabel.text = self.exhibitTitle
 		self.imageView.image = self.image
 	}
@@ -32,11 +33,27 @@ class DefaultTemplate: UIViewController {
 		openMenuButton.target = self.revealViewController()
 		openMenuButton.action = Selector("revealToggle:")
 		self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+		let tapGesture = UITapGestureRecognizer(target: self, action: Selector("imageTapDetected"))
+		tapGesture.numberOfTapsRequired = 1
+		self.imageView.userInteractionEnabled = true
+		self.imageView.addGestureRecognizer(tapGesture)
 	}
 	
 	override func didReceiveMemoryWarning()
 	{
 		super.didReceiveMemoryWarning()
+	}
+	
+	func imageTapDetected()
+	{
+//		self.performSegueWithIdentifier("modalImageView", sender: self)
+		
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+	{
+		let destViewController = segue.destinationViewController as! ImageModalViewController
+		destViewController.imageModal = self.imageView.image
 	}
 
 }
