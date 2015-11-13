@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import museubeacon.museubeacon.cache.BeaconCache;
 import museubeacon.museubeacon.template.TemplateObject;
 
 public class BeaconService extends Service {
@@ -125,16 +126,24 @@ public class BeaconService extends Service {
         for(Beacon beacon : beacons) {
             String beaconID = beacon.getMajor() + "-" + beacon.getMinor();
 
-            Set<String> templates = templateMap.get(beaconID);
-            if(templates != null) {
-                for (String template : templates) {
-                    Set<String> beaconIDs = templateToBeaconMap.get(template);
-                    if (beaconIDs == null) {
-                        beaconIDs = new HashSet<>();
-                        beaconIDs.add(beaconID);
-                        templateToBeaconMap.put(template, beaconIDs);
-                    } else {
-                        beaconIDs.add(beaconID);
+            List<TemplateObject> cachedList = BeaconCache.getList(beaconID);
+            if(cachedList != null) {
+                for(TemplateObject obj : cachedList) {
+                    templateList.add(obj);
+                    displayList.add(obj.getTitle());
+                }
+            } else {
+                Set<String> templates = templateMap.get(beaconID);
+                if (templates != null) {
+                    for (String template : templates) {
+                        Set<String> beaconIDs = templateToBeaconMap.get(template);
+                        if (beaconIDs == null) {
+                            beaconIDs = new HashSet<>();
+                            beaconIDs.add(beaconID);
+                            templateToBeaconMap.put(template, beaconIDs);
+                        } else {
+                            beaconIDs.add(beaconID);
+                        }
                     }
                 }
             }
@@ -146,8 +155,10 @@ public class BeaconService extends Service {
 
             try {
                 for(ParseObject obj : query.find()) {
-                    templateList.add(new TemplateObject(obj));
-                    displayList.add(obj.getString("Title"));
+                    TemplateObject templObj = new TemplateObject(obj);
+                    templateList.add(templObj);
+                    displayList.add(templObj.getTitle());
+                    BeaconCache.put(templObj);
                 }
             } catch (ParseException e) {
                 e.printStackTrace();

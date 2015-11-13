@@ -24,6 +24,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.estimote.sdk.Beacon;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -201,6 +203,15 @@ public class MainActivity extends Activity {
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            List<Beacon> dummyBeacons = new ArrayList<>();
+            Beacon beacon1 = new Beacon(BeaconService.UUID, "", "", 32500, 61345, 0, 0);
+            Beacon beacon2 = new Beacon(BeaconService.UUID, "", "", 40109, 57375, 0, 0);
+            Beacon beacon3 = new Beacon(BeaconService.UUID, "", "", 29121, 22674, 0, 0);
+            dummyBeacons.add(beacon1);
+            dummyBeacons.add(beacon2);
+            dummyBeacons.add(beacon3);
+
+            beaconService.updateBeaconList(dummyBeacons);
             return true;
         }
 

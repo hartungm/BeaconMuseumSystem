@@ -19,6 +19,9 @@ public class TemplateObject implements Serializable {
     public String getTitle() {
         return parseObject.getString("Title");
     }
+    public String getBeaconID() {
+        return parseObject.getString("BeaconID");
+    }
     public String getText() {
         return parseObject.getString("Text");
     }
