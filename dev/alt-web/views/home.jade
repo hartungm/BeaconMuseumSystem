@@ -1,11 +1,35 @@
 extends layout
 
 block content
-	div.container
+	div.sidebar.col-md-2
+		div.row.sidebar-header.sidebar-title
+			div.col-md-12
+				h3 Select Exhibit
+		div.row.sidebar-header
+			div.col-md-6
+				h4 Name
+			div.col-md-6
+				h4 Collection
+		div.row.sidebar-content
+			div.col-md-6
+				h4 Mona Lisa
+			div.col-md-6
+				h4 Mona Lisa Collection
+		div.row.sidebar-content
+			div.col-md-6
+				h4 The Last Supper
+			div.col-md-6
+				h4 The Last Supper Collection
+		div.row.sidebar-content
+			div.col-md-6
+				h4 Monet
+			div.col-md-6
+				h4 Monet Collection
+	div.container.col-md-10
 		div.row
-			div.col-sm-6.col-md-4.col-md-offset-4
+			div.col-sm-10.col-md-10.col-md-offset-1
 				#user
-					h1.text-center.login-title Welcome #{user.firstName}. Check your details below:
+					h1.text-center.login-title Welcome #{user.firstName}. Configure your exhibits below:
 						div.signup-wall
 							ul.user-details
 								li Username   ---> #{user.username}
