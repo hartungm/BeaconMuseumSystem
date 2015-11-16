@@ -31,11 +31,11 @@ block content
 				#user
 					h1.text-center.login-title Welcome #{user.firstName}. Configure your exhibits below:
 						div.signup-wall
-							ul.user-details
-								li Username   ---> #{user.username}
-								li Email      ---> #{user.email}
-								li First Name ---> #{user.firstName} 
-								li Last Name  ---> #{user.lastName}
-								li ParseID    ---> #{user.parseID}
-								li Admin      ---> #{user.admin}
+							div.beacon-form
+								h3 Exhibit Details
+								form(class='form-editbeacon', action='/editbeacon', method='POST')
+									input(type='text', name='exhibitname' class='form-control', placeholder='Exhibit Name',required, autofocus)
+									input(type='text', name='collectionname' class='form-control', placeholder='Collection Name',required, autofocus)
+									input(type='textarea', name='text' class='form-control', placeholder='Text',required, autofocus)
+									button(class='btn btn-lg btn-primary btn-block', type='submit') Submit Changes
 						a(href='/signout', class='text-center new-account') Sign Out

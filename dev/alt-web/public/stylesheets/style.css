@@ -122,3 +122,21 @@ ul.user-details{
 .sidebar-content h4 {
     text-align: left;
 }
+
+.beacon-form h3 {
+    color: #666;
+}
+.form-editbeacon {
+    max-width: 500px;
+    margin: 0 auto;
+}
+.form-editbeacon input, .form-editbeacon button {
+    margin-top: 20px;
+}
+.form-editbeacon input:first-of-type {
+    margin-top: 0;
+}
+.form-editbeacon button {
+    width: 200px;
+    margin: 20px auto 0;
+}
