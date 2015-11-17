@@ -114,13 +114,14 @@ ul.user-details{
     font-weight: 700;
 }
 .sidebar-content {
-    background-color: #444444;
+    background-color: #f7f7f7;
 }
 .sidebar-content:hover {
     background-color: #00B7FF;
 }
 .sidebar-content h4 {
     text-align: left;
+    color: #666666;
 }
 
 .beacon-form h3 {
