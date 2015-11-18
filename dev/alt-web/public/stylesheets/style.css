@@ -131,7 +131,7 @@ ul.user-details{
     max-width: 500px;
     margin: 0 auto;
 }
-.form-editbeacon input, .form-editbeacon button {
+.form-editbeacon input, .form-editbeacon textarea, .form-editbeacon button {
     margin-top: 20px;
 }
 .form-editbeacon input:first-of-type {
