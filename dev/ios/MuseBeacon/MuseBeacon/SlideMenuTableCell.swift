@@ -15,5 +15,6 @@ class SlideMenuTableCell: PFTableViewCell
 	@IBOutlet weak var titleLabel: UILabel!
 	var slideText: String = ""
 	var slideImage: PFFile = PFFile()
+	var slideAudio: PFFile = PFFile()
 	var type: String = ""
 }

@@ -24,6 +24,8 @@
 		4C1255841BB7266C00944BD8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255831BB7266C00944BD8 /* libz.tbd */; };
 		4C1255861BB7267600944BD8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1255851BB7267600944BD8 /* libsqlite3.tbd */; };
 		4C12558A1BB8B9CB00944BD8 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */; };
+		4C2273AF1C03D6E300AD79B9 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C2273AE1C03D6E300AD79B9 /* AVKit.framework */; };
+		4C2273B11C03D71E00AD79B9 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2273B01C03D71E00AD79B9 /* AudioPlayerViewController.swift */; };
 		4C657FFB1BB9FE31004D87E9 /* SliderMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */; };
 		4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */; };
 		4C8DCA1A1BBF6CF7000A5268 /* DefaultTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */; };
@@ -74,6 +76,8 @@
 		4C1255871BB8B9CA00944BD8 /* MuseBeacon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MuseBeacon-Bridging-Header.h"; sourceTree = "<group>"; };
 		4C1255881BB8B9CB00944BD8 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		4C1255891BB8B9CB00944BD8 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		4C2273AE1C03D6E300AD79B9 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		4C2273B01C03D71E00AD79B9 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		4C657FFA1BB9FE31004D87E9 /* SliderMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderMenuViewController.swift; sourceTree = "<group>"; };
 		4C8DCA171BBF68B4000A5268 /* SlideMenuTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTableCell.swift; sourceTree = "<group>"; };
 		4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTemplate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2273AF1C03D6E300AD79B9 /* AVKit.framework in Frameworks */,
 				4C1255861BB7267600944BD8 /* libsqlite3.tbd in Frameworks */,
 				4C1255841BB7266C00944BD8 /* libz.tbd in Frameworks */,
 				4C1255821BB7265200944BD8 /* SystemConfiguration.framework in Frameworks */,
@@ -165,6 +170,7 @@
 		4CE679E81BB4EFC900E75480 = {
 			isa = PBXGroup;
 			children = (
+				4C2273AE1C03D6E300AD79B9 /* AVKit.framework */,
 				4CE679F31BB4EFC900E75480 /* MuseBeacon */,
 				4CE67A081BB4EFC900E75480 /* MuseBeaconTests */,
 				4CE67A131BB4EFC900E75480 /* MuseBeaconUITests */,
@@ -190,6 +196,7 @@
 				4CE679F41BB4EFC900E75480 /* AppDelegate.swift */,
 				4C8DCA191BBF6CF7000A5268 /* DefaultTemplate.swift */,
 				4CE679F81BB4EFC900E75480 /* Main.storyboard */,
+				4C2273B01C03D71E00AD79B9 /* AudioPlayerViewController.swift */,
 				4CB521751BEE8FF900312F3C /* ImageModalViewController.swift */,
 				4CE679FB1BB4EFC900E75480 /* Assets.xcassets */,
 				4CE679FD1BB4EFC900E75480 /* LaunchScreen.storyboard */,
@@ -348,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2273B11C03D71E00AD79B9 /* AudioPlayerViewController.swift in Sources */,
 				4CB521761BEE8FF900312F3C /* ImageModalViewController.swift in Sources */,
 				4C8DCA181BBF68B4000A5268 /* SlideMenuTableCell.swift in Sources */,
 				4CE679F51BB4EFC900E75480 /* AppDelegate.swift in Sources */,

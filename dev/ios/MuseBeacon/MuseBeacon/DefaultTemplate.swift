@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class DefaultTemplate: UIViewController {
 	
@@ -16,6 +17,7 @@ class DefaultTemplate: UIViewController {
 	@IBOutlet weak var scrollTextView: UITextView!
 	var exhibitTitle = ""
 	var exhibitText = ""
+	var audioFile = PFFile()
 	var image = UIImage()
 	
 	
@@ -52,8 +54,8 @@ class DefaultTemplate: UIViewController {
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 	{
-		let destViewController = segue.destinationViewController as! ImageModalViewController
-		destViewController.imageModal = self.imageView.image
+		let destViewController = segue.destinationViewController as! AudioPlayerViewController
+		destViewController.audioFile = self.audioFile
 	}
 
 }

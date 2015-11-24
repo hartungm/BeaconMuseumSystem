@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wXi-3C-9Zw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wXi-3C-9Zw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -132,10 +132,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpc-Sp-R19">
+                                <rect key="frame" x="280" y="550" width="40" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Audio"/>
+                                <connections>
+                                    <segue destination="X8B-2g-TtU" kind="show" id="WeM-Sv-Cwk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Rpc-Sp-R19" secondAttribute="bottom" constant="20" symbolic="YES" id="3xy-OQ-YhS"/>
                             <constraint firstItem="3Hj-zK-p8A" firstAttribute="top" secondItem="er4-oy-5IS" secondAttribute="bottom" constant="8" symbolic="YES" id="B2d-Li-1ZM"/>
                             <constraint firstItem="er4-oy-5IS" firstAttribute="trailing" secondItem="PCV-5V-Q6Z" secondAttribute="trailing" id="KSa-8t-1yW"/>
                             <constraint firstItem="PCV-5V-Q6Z" firstAttribute="top" secondItem="5bd-3c-32s" secondAttribute="bottom" constant="28" id="Qvh-Hn-52S"/>
@@ -146,6 +155,7 @@
                             <constraint firstItem="3Hj-zK-p8A" firstAttribute="trailing" secondItem="jc4-66-KqA" secondAttribute="trailingMargin" id="iZj-nr-sRc"/>
                             <constraint firstItem="ozI-61-vvR" firstAttribute="top" secondItem="3Hj-zK-p8A" secondAttribute="bottom" constant="8" symbolic="YES" id="mK3-qP-zdl"/>
                             <constraint firstItem="er4-oy-5IS" firstAttribute="top" secondItem="PCV-5V-Q6Z" secondAttribute="bottom" constant="8" symbolic="YES" id="wwO-90-W1W"/>
+                            <constraint firstItem="Rpc-Sp-R19" firstAttribute="centerX" secondItem="3Hj-zK-p8A" secondAttribute="centerX" id="yuH-Ef-5vr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WMN-cp-20E">
@@ -162,6 +172,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DDj-Nw-paA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2232" y="1632"/>
+        </scene>
+        <!--AV Player View Controller-->
+        <scene sceneID="z7x-cH-1FL">
+            <objects>
+                <avPlayerViewController videoGravity="AVLayerVideoGravityResizeAspect" id="X8B-2g-TtU" customClass="AudioPlayerViewController" customModule="MuseBeacon" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jwZ-MU-mub" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2232" y="2395"/>
         </scene>
         <!--Image Modal View Controller-->
         <scene sceneID="eJv-sA-ss8">

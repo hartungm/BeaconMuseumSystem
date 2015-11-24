@@ -96,6 +96,10 @@ class SliderMenuViewController: PFQueryTableViewController, CLLocationManagerDel
 		{
 			cell!.slideImage = object?.objectForKey("Image") as! PFFile
 		}
+		if( object?.objectForKey("Audio") != nil )
+		{
+			cell!.slideAudio = object?.objectForKey("Audio") as! PFFile
+		}
 		return cell
 	}
 	
@@ -109,6 +113,7 @@ class SliderMenuViewController: PFQueryTableViewController, CLLocationManagerDel
 			let destination : DefaultTemplate = navController.childViewControllers[0] as! DefaultTemplate
 			destination.exhibitTitle = selectedCell.titleLabel.text!
 			destination.exhibitText = selectedCell.slideText
+			destination.audioFile = selectedCell.slideAudio
 			selectedCell.slideImage.getDataInBackgroundWithBlock
 			{
 				(imageData: NSData?, error: NSError?) -> Void in
