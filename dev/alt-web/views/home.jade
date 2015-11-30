@@ -10,20 +10,23 @@ block content
 				h4 Name
 			div.col-md-6
 				h4 Collection
-		div.row.sidebar-content
-			div.col-md-6
+		div.row.sidebar-content.exhibit
+			input(type="hidden", name="objectID", value="1234")
+			div.col-md-6.name
 				h4 Mona Lisa
-			div.col-md-6
+			div.col-md-6.collection
 				h4 Mona Lisa Collection
-		div.row.sidebar-content
-			div.col-md-6
+		div.row.sidebar-content.exhibit
+			input(type="hidden", name="objectID", value="2345")
+			div.col-md-6.name
 				h4 The Last Supper
-			div.col-md-6
+			div.col-md-6.collection
 				h4 The Last Supper Collection
-		div.row.sidebar-content
-			div.col-md-6
+		div.row.sidebar-content.exhibit
+			input(type="hidden", name="objectID", value="3456")
+			div.col-md-6.name
 				h4 Monet
-			div.col-md-6
+			div.col-md-6.collection
 				h4 Monet Collection
 	div.container.col-md-10
 		div.row
@@ -34,8 +37,10 @@ block content
 							div.beacon-form
 								h3 Exhibit Details
 								form(class='form-editbeacon', action='/editbeacon', method='POST')
+									input(type="hidden", name="currentObjectID", required)
 									input(type='text', name='exhibitname' class='form-control', placeholder='Exhibit Name',required, autofocus)
 									input(type='text', name='collectionname' class='form-control', placeholder='Collection Name',required, autofocus)
 									textarea(name='text' class='form-control', placeholder='Text',required, autofocus)
 									button(class='btn btn-lg btn-primary btn-block', type='submit') Submit Changes
 						a(href='/signout', class='text-center new-account') Sign Out
+	script(src="/javascript/home.js")
