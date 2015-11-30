@@ -1,14 +1,19 @@
 package museubeacon.museubeacon.template;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -44,6 +49,10 @@ public class MainFragment extends Fragment {
         final TextView titleView = (TextView) view.findViewById(R.id.fragmentTitle);
         final TextView textView = (TextView) view.findViewById(R.id.fragmentText);
         final ImageView imageView = (ImageView) view.findViewById(R.id.fragmentImage);
+        final Button playButton = (Button) view.findViewById(R.id.playButton);
+        final Button pauseButton = (Button) view.findViewById(R.id.pauseButton);
+        final MediaPlayer mediaPlayer = new MediaPlayer();
+        final ParseFile audioFile;
 
         titleView.setText(obj.getTitle());
         textView.setText(obj.getText());
@@ -54,11 +63,40 @@ public class MainFragment extends Fragment {
             }
 
         });
+        getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        audioFile = obj.getAudio();
+        audioFile.getDataInBackground(new GetDataCallback() {
+            public void done(byte[] data, ParseException e) {
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try {
+                    mediaPlayer.setDataSource(audioFile.getUrl());
+                    mediaPlayer.prepare();
+                }
+                catch(Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
+        // When play button is clicked for MediaPlayer, plays the audio file
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.start();
+            }
+        });
+
+        // When pause button is clicked for MediaPlayer, pauses the audio file
+        pauseButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.pause();
+            }
+        });
         return view;
     }
 
-    public void onAttach(Context activity) {
+    public void onAttach(Activity activity) {
         super.onAttach(activity);
         obj = (TemplateObject) getArguments().getSerializable(PARSE_OBJ);
         if(obj != null) {

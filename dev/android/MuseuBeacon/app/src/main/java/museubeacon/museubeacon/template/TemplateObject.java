@@ -28,4 +28,7 @@ public class TemplateObject implements Serializable {
     public ParseFile getImage() {
         return parseObject.getParseFile("Image");
     }
+    public ParseFile getAudio() {
+        return parseObject.getParseFile("Audio");
+    }
 }
