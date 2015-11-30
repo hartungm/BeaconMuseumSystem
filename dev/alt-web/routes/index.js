@@ -36,11 +36,12 @@ module.exports = function(passport) {
     });
 
     /* Handle Login POST */
-    router.post('/login', passport.authenticate('login', {
-        successRedirect: '/home',
-        failureRedirect: '/',
-        failureFlash : true
-    }));
+    router.post('/login',
+        passport.authenticate('login', { failureRedirect: '/', failureFlash : true }),
+        function(req, res, next) {
+            return res.redirect(req.user.admin === true ? '/admin' : '/home');
+        }
+    );
 
     /* GET Registration Page */
     router.get('/signup', requireAdmin, function(req, res) {
