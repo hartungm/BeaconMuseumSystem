@@ -10,6 +10,6 @@ function beaconDisplay() {
 
   query.each(
     function myF(object){
-      $(".sidebar col-md-2").append("<div class='row sidebar-content exhibit'><input type='hidden' name='objectID' value=" + object.id + "/><div class='col-md-6 name'><h4>" + object.get('Title') + "</h4></div> <div class='col-md-6 collection'><h4>" + object.get('Collection') + "</h4></div></div>");
+      $(".sidebar col-md-2").append("<div class='row sidebar-content exhibit'><input type='hidden' name='objectID' value=" + object.id + "/><input type='hidden' name='text' value=" + object.get('Text') + "/><div class='col-md-6 name'><h4>" + object.get('Title') + "</h4></div> <div class='col-md-6 collection'><h4>" + object.get('Collection') + "</h4></div></div>");
     });
 }
