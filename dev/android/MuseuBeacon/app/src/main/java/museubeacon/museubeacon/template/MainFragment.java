@@ -65,24 +65,23 @@ public class MainFragment extends Fragment {
         });
         getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
         audioFile = obj.getAudio();
-        audioFile.getDataInBackground(new GetDataCallback() {
-            public void done(byte[] data, ParseException e) {
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                try {
-                    mediaPlayer.setDataSource(audioFile.getUrl());
-                    mediaPlayer.prepare();
-                }
-                catch(Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        try {
+            mediaPlayer.setDataSource(audioFile.getUrl());
+            mediaPlayer.prepare();
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+        }
 
         // When play button is clicked for MediaPlayer, plays the audio file
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mediaPlayer.start();
+                View secondView = getActivity().findViewById(R.id.pauseButton);
+                secondView.setVisibility(View.VISIBLE);
+                v.setVisibility(View.GONE);
             }
         });
 
@@ -91,6 +90,9 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mediaPlayer.pause();
+                View secondView = getActivity().findViewById(R.id.playButton);
+                secondView.setVisibility(View.VISIBLE);
+                v.setVisibility(View.GONE);
             }
         });
         return view;

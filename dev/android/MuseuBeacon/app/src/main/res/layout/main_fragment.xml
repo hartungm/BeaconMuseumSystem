@@ -55,12 +55,18 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/playButton"
-            android:text="@string/play_button"/>
+            android:text="@string/play_button"
+            android:layout_gravity="center_horizontal"
+            android:background="#F0F0F0"
+            />
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/pauseButton"
-            android:text="@string/pause_button" />
+            android:text="@string/pause_button"
+            android:visibility="invisible"
+            android:layout_gravity="center_horizontal"
+            android:background="#F0F0F0" />
     </LinearLayout>
 
 </RelativeLayout>
