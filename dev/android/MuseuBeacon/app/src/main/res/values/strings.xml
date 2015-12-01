@@ -13,4 +13,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
+
+    <string name="image_content">Image of the artwork</string>
+    <string name="play_button"> Play </string>
+    <string name="pause_button"> Pause </string>
 </resources>

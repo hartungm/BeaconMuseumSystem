@@ -14,7 +14,6 @@ import Parse
 class AudioPlayerViewController: AVPlayerViewController
 {
 	var audioFile = PFFile()
-	var audioData = NSData()
 
     override func viewDidLoad()
 	{
