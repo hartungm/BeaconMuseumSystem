@@ -44,7 +44,7 @@ module.exports = function(passport) {
     );
 
     /* GET Registration Page */
-    router.get('/signup', requireAdmin, function(req, res) {
+    router.get('/signup', function(req, res) { //TODO fix back to requireAdmin
         res.render('register',{message: req.flash('message')});
     });
 
@@ -56,7 +56,7 @@ module.exports = function(passport) {
     }));
 
     /* GET Admin Page */
-    router.get('/admin', requireAdmin, function(req, res) {
+    router.get('/admin', isAuthenticated, function(req, res) { //TODO fix back to requireAdmin
         res.render('admin', { user: req.user });
     });
 
