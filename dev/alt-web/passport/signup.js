@@ -10,12 +10,6 @@ module.exports = function(passport){
         function(req, username, password, done) {
 
             findOrCreateUser = function() {
-                // check to ensure current user has permissions
-                //TODO re-erect barrier here when admin is good
-                //if (req.session.user.admin != true) {
-                //    console.log('User does not have permission to create users');
-                //    return done(null, false, req.flash('message','Insufficient Permissions'));
-                // }
                 // find a user in Mongo with provided username
                 User.findOne({ 'username' :  username }, function(err, user) {
                     // In case of any error, return using the done method
