@@ -5,8 +5,8 @@ function submitChanges(beaconID) {
 	var collectionName = document.getElementsByName('collectionname');
 	var description = document.getElementsByName('text');
 	
-  var BeaconEntry = Parse.Object.extend("DefaultTemplate");
-  var BeaconEntry = new DefaultTemplate();
+	var BeaconEntry = Parse.Object.extend("DefaultTemplate");
+	var BeaconEntry = new DefaultTemplate();
 
 	// better to compare with parse and see if a change was made? 
 	// or just resend the data anyways?
