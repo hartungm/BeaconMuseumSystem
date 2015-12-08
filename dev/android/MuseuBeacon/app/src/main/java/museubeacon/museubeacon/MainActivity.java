@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -88,6 +90,7 @@ public class MainActivity extends Activity {
             actionBar.setHomeButtonEnabled(true);
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setTitle(this.title);
+            actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#5D478B")));
 
             templateDisplayAdapter = new ArrayAdapter<>(
                     actionBar.getThemedContext(),
