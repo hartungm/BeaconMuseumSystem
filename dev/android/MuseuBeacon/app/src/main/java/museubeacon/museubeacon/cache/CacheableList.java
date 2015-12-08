@@ -19,7 +19,6 @@ public class CacheableList {
         this.templateList.add(templObject);
 
         Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
         cal.roll(Calendar.MINUTE, 5);
         // This cache object expires 5 minutes after creation
         this.expirationDate = cal.getTime();

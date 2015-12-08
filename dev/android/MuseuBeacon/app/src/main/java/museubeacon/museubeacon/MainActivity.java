@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.res.Configuration;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
@@ -41,9 +42,10 @@ public class MainActivity extends Activity {
     private ArrayAdapter<String> templateDisplayAdapter;
     private BroadcastReceiver receiver;
     private ActionBarDrawerToggle drawerToggle;
+    private final MediaPlayer mediaPlayer = new MediaPlayer();
 
     private BeaconService beaconService;
-    private List<TemplateObject> templateList;
+    private List<TemplateObject> templateList = new ArrayList<>();
     private ServiceConnection beaconServiceConnection = new BeaconServiceConnection();
     private boolean isBound;
 
@@ -69,7 +71,7 @@ public class MainActivity extends Activity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         templateDrawer = (ListView) findViewById(R.id.beacon_drawer);
-        title = getTitle();
+        title = "MuseBeacon";
 
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
 
@@ -84,6 +86,8 @@ public class MainActivity extends Activity {
         if(actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle(this.title);
 
             templateDisplayAdapter = new ArrayAdapter<>(
                     actionBar.getThemedContext(),
@@ -131,8 +135,10 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null) {
             drawerLayout.openDrawer(GravityCompat.START);
             currentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
-            selectItem(currentSelectedPosition, templateList.get(currentSelectedPosition));
-            templateDrawer.setItemChecked(currentSelectedPosition, true);
+            if(currentSelectedPosition < templateList.size()) {
+                selectItem(currentSelectedPosition, templateList.get(currentSelectedPosition));
+                templateDrawer.setItemChecked(currentSelectedPosition, true);
+            }
         }
 
         drawerLayout.setDrawerListener(drawerToggle);
@@ -151,6 +157,10 @@ public class MainActivity extends Activity {
                 .replace(R.id.fragment_container, MainFragment.newInstance(obj))
                 .commit();
 
+        if(position != currentSelectedPosition) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+        }
         currentSelectedPosition = position;
         templateDrawer.setItemChecked(currentSelectedPosition, true);
 
@@ -216,6 +226,10 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public MediaPlayer getMediaPlayer() {
+        return this.mediaPlayer;
     }
 
     @Override

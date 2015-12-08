@@ -2,8 +2,6 @@ package museubeacon.museubeacon.template;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,11 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.parse.GetDataCallback;
-import com.parse.ParseException;
-import com.parse.ParseFile;
 
 import museubeacon.museubeacon.MainActivity;
 import museubeacon.museubeacon.R;
@@ -31,7 +24,7 @@ public class MainFragment extends Fragment {
     public static Fragment newInstance(TemplateObject obj) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
-        args.putSerializable(PARSE_OBJ, obj);
+        args.putParcelable(PARSE_OBJ, obj);
 
         fragment.setArguments(args);
         return fragment;
@@ -51,23 +44,18 @@ public class MainFragment extends Fragment {
         final ImageView imageView = (ImageView) view.findViewById(R.id.fragmentImage);
         final Button playButton = (Button) view.findViewById(R.id.playButton);
         final Button pauseButton = (Button) view.findViewById(R.id.pauseButton);
-        final MediaPlayer mediaPlayer = new MediaPlayer();
-        final ParseFile audioFile;
+        final MediaPlayer mediaPlayer = ((MainActivity) getActivity()).getMediaPlayer();
 
         titleView.setText(obj.getTitle());
         textView.setText(obj.getText());
-        ParseFile file = obj.getImage();
-        file.getDataInBackground(new GetDataCallback() {
-            public void done(byte[] data, ParseException e) {
-                imageView.setImageBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
-            }
+        imageView.setImageBitmap(obj.getImage());
 
-        });
         getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        audioFile = obj.getAudio();
+        mediaPlayer.reset();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
         try {
-            mediaPlayer.setDataSource(audioFile.getUrl());
+            mediaPlayer.setDataSource(obj.getAudioURL());
             mediaPlayer.prepare();
         }
         catch(Exception ex) {
@@ -79,8 +67,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mediaPlayer.start();
-                View secondView = getActivity().findViewById(R.id.pauseButton);
-                secondView.setVisibility(View.VISIBLE);
+                pauseButton.setVisibility(View.VISIBLE);
                 v.setVisibility(View.GONE);
             }
         });
@@ -90,17 +77,28 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mediaPlayer.pause();
-                View secondView = getActivity().findViewById(R.id.playButton);
-                secondView.setVisibility(View.VISIBLE);
+                playButton.setVisibility(View.VISIBLE);
                 v.setVisibility(View.GONE);
             }
         });
         return view;
     }
 
+    @Override
+    public void onResume() {
+        MediaPlayer mediaPlayer = ((MainActivity) getActivity()).getMediaPlayer();
+        View view = this.getView();
+
+        if(view != null && mediaPlayer.isPlaying()) {
+            view.findViewById(R.id.pauseButton).setVisibility(View.GONE);
+            view.findViewById(R.id.playButton).setVisibility(View.GONE);
+        }
+        super.onResume();
+    }
+
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        obj = (TemplateObject) getArguments().getSerializable(PARSE_OBJ);
+        obj = getArguments().getParcelable(PARSE_OBJ);
         if(obj != null) {
             ((MainActivity) activity).onSectionAttached(obj.getTitle());
         }
