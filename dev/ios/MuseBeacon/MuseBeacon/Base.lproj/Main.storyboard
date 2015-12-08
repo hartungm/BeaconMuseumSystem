@@ -113,8 +113,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="UqP-28-vgT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PCV-5V-Q6Z">
@@ -124,38 +124,46 @@
                                     <constraint firstAttribute="height" constant="128" id="0WG-WN-tgH"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Hj-zK-p8A">
-                                <rect key="frame" x="20" y="298" width="560" height="294"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.94999999999999996" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Hj-zK-p8A">
+                                <rect key="frame" x="20" y="298" width="560" height="251"/>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpc-Sp-R19">
-                                <rect key="frame" x="280" y="550" width="40" height="30"/>
+                                <rect key="frame" x="239" y="550" width="123" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Audio"/>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.54509803921568623" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="jN5-yf-Wpu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Audio">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="X8B-2g-TtU" kind="show" id="WeM-Sv-Cwk"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.43529411764705883" green="0.32941176470588235" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Rpc-Sp-R19" secondAttribute="bottom" constant="20" symbolic="YES" id="3xy-OQ-YhS"/>
+                            <constraint firstAttribute="bottom" secondItem="Rpc-Sp-R19" secondAttribute="bottom" constant="20" symbolic="YES" id="3YH-Oh-FAb"/>
                             <constraint firstItem="3Hj-zK-p8A" firstAttribute="top" secondItem="er4-oy-5IS" secondAttribute="bottom" constant="8" symbolic="YES" id="B2d-Li-1ZM"/>
                             <constraint firstItem="er4-oy-5IS" firstAttribute="trailing" secondItem="PCV-5V-Q6Z" secondAttribute="trailing" id="KSa-8t-1yW"/>
                             <constraint firstItem="PCV-5V-Q6Z" firstAttribute="top" secondItem="5bd-3c-32s" secondAttribute="bottom" constant="28" id="Qvh-Hn-52S"/>
                             <constraint firstItem="PCV-5V-Q6Z" firstAttribute="leading" secondItem="er4-oy-5IS" secondAttribute="leading" id="V6x-Ke-h32"/>
+                            <constraint firstItem="Rpc-Sp-R19" firstAttribute="centerX" secondItem="3Hj-zK-p8A" secondAttribute="centerX" id="VYV-0i-wzg"/>
                             <constraint firstItem="er4-oy-5IS" firstAttribute="leading" secondItem="jc4-66-KqA" secondAttribute="leadingMargin" id="XIs-Bd-HjN"/>
                             <constraint firstItem="3Hj-zK-p8A" firstAttribute="trailing" secondItem="er4-oy-5IS" secondAttribute="trailing" id="ZuG-8U-P2P"/>
                             <constraint firstItem="3Hj-zK-p8A" firstAttribute="leading" secondItem="er4-oy-5IS" secondAttribute="leading" id="hK2-IM-uU4"/>
                             <constraint firstItem="3Hj-zK-p8A" firstAttribute="trailing" secondItem="jc4-66-KqA" secondAttribute="trailingMargin" id="iZj-nr-sRc"/>
-                            <constraint firstItem="ozI-61-vvR" firstAttribute="top" secondItem="3Hj-zK-p8A" secondAttribute="bottom" constant="8" symbolic="YES" id="mK3-qP-zdl"/>
+                            <constraint firstItem="ozI-61-vvR" firstAttribute="top" secondItem="3Hj-zK-p8A" secondAttribute="bottom" constant="51" id="mK3-qP-zdl"/>
+                            <constraint firstItem="Rpc-Sp-R19" firstAttribute="top" secondItem="3Hj-zK-p8A" secondAttribute="bottom" constant="1" id="o9j-D4-RBh"/>
                             <constraint firstItem="er4-oy-5IS" firstAttribute="top" secondItem="PCV-5V-Q6Z" secondAttribute="bottom" constant="8" symbolic="YES" id="wwO-90-W1W"/>
-                            <constraint firstItem="Rpc-Sp-R19" firstAttribute="centerX" secondItem="3Hj-zK-p8A" secondAttribute="centerX" id="yuH-Ef-5vr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WMN-cp-20E">
